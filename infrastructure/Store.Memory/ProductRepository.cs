@@ -9,8 +9,8 @@ namespace Store.Memory
         private readonly Product[] products = new[]
         {
             new Product(1, "001"),
-            new Product(2, "001"),
-            new Product(3, "001"),
+            new Product(2, "002"),
+            new Product(3, "003"),
         };
 
 
