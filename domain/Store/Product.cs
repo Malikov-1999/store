@@ -1,17 +1,33 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 
 namespace Store;
 
 public class Product
 {
     public int Id { get; }
-    public string SKU { get; }
-    public string? Name { get; }
+    public string Isbn { get; }
+    public string Title { get; }
+    public string Author { get; }
    
-    public Product(int id, string sku)
+    public Product(int id, string isbn, string author, string title)
     {
         Id = id;
-        SKU = sku;
+        Isbn = isbn;
+        Author = author;
+        Title = title;
+    }
+
+    internal static bool IsIsbn(string s)
+    {
+        if(s == null)
+          return false;
+
+        s = s.Replace("-", "")
+             .Replace(" ", "")
+             .ToUpper();
+
+        return Regex.IsMatch(s, @"^ISBN\d{10}(\d{3})?$");
     }
 
 }

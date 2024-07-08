@@ -8,6 +8,7 @@ namespace Store
 {
     public interface IProductRepository
     {
-        Product[] GetAllBySKU(string sku);
+        Product[] GetAllByIsbn(string isbn);
+        Product[] GetAllByTitleOrAuthor(string titlePart);
     }
 }

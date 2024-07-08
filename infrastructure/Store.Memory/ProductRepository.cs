@@ -8,18 +8,23 @@ namespace Store.Memory
 
         private readonly Product[] products = new[]
         {
-            new Product(1, "001"),
-            new Product(2, "002"),
-            new Product(3, "003"),
+            new Product(1, "ISBN 123-456-789 0", "D. Knuth", "Art of Programming"),
+            new Product(2, "ISBN 123-456-789 1", "D. Knuth", "Art of Programming")
+            
         };
 
-
-
-        public Product[] GetAllBySKU(string sku)
+        public Product[] GetAllByIsbn(string isbn)
         {
-            return products.Where(product =>  product.SKU.Contains(sku))
-                .ToArray();
+            return products.Where(product =>  product.Isbn == isbn)
+                           .ToArray();
         }
-        
+
+        public Product[] GetAllByTitleOrAuthor(string query)
+        {
+            return products.Where(product => product.Author.Contains(query)
+                                          || product.Title.Contains(query))
+                           .ToArray();
+                                           
+        }
     }
 }
